@@ -13,31 +13,31 @@ bool showWebView = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('App da Vovó'),
-        actions: [
-          showWebView ? Padding(
-            padding: const EdgeInsets.all(8),
-            child: IconButton(
-              splashRadius: 15,
-              onPressed: (){
-              setState(() {
-                showWebView = !showWebView;
-              });
-            }, icon: const Icon(Icons.chevron_left_rounded)),
-          ) : const SizedBox.shrink(),
-        ],
-      ),
-      body: Builder(
-        builder: (_) {
-          if(showWebView){
-            return const CustomWebViewWidget();
-          }
-          return Padding(
-            padding: const EdgeInsets.all(24),
-            child: Expanded(
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: const Text('App da Vovó'),
+          actions: [
+            showWebView ? Padding(
+              padding: const EdgeInsets.all(8),
+              child: IconButton(
+                splashRadius: 15,
+                onPressed: (){
+                setState(() {
+                  showWebView = !showWebView;
+                });
+              }, icon: const Icon(Icons.chevron_left_rounded)),
+            ) : const SizedBox.shrink(),
+          ],
+        ),
+        body: Builder(
+          builder: (_) {
+            if(showWebView){
+              return const CustomWebViewWidget();
+            }
+            return Padding(
+              padding: const EdgeInsets.all(24),
               child: Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -73,9 +73,9 @@ bool showWebView = false;
                   )
                 ],
               )),
-            ),
-          );
-        }
+            );
+          }
+        ),
       ),
     );
   }
